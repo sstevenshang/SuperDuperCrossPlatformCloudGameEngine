@@ -6,8 +6,12 @@
 //  Copyright © 2018 sstevenshang. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class NetworkManager: NSObject {
+
+    // Singleton
+    static let sharedSession: NetworkManager = NetworkManager()
+    
 
 }
