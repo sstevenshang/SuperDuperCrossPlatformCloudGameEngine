@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B55DF06F2041D8B70089EFA6 /* ShapedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55DF06E2041D8B70089EFA6 /* ShapedObjects.swift */; };
+		B55DF0712042021A0089EFA6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55DF0702042021A0089EFA6 /* NetworkManager.swift */; };
 		B58008BF204141B300648D94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58008BE204141B300648D94 /* AppDelegate.swift */; };
 		B58008C1204141B300648D94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58008C0204141B300648D94 /* ViewController.swift */; };
 		B58008C4204141B300648D94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58008C2204141B300648D94 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B55DF06E2041D8B70089EFA6 /* ShapedObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapedObjects.swift; sourceTree = "<group>"; };
+		B55DF0702042021A0089EFA6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B58008BB204141B300648D94 /* iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58008BE204141B300648D94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B58008C0204141B300648D94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 				B58008C5204141B300648D94 /* Assets.xcassets */,
 				B58008C7204141B300648D94 /* LaunchScreen.storyboard */,
 				B58008CA204141B300648D94 /* Info.plist */,
+				B55DF06E2041D8B70089EFA6 /* ShapedObjects.swift */,
+				B55DF0702042021A0089EFA6 /* NetworkManager.swift */,
 			);
 			path = iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor;
 			sourceTree = "<group>";
@@ -136,6 +142,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55DF0712042021A0089EFA6 /* NetworkManager.swift in Sources */,
+				B55DF06F2041D8B70089EFA6 /* ShapedObjects.swift in Sources */,
 				B58008C1204141B300648D94 /* ViewController.swift in Sources */,
 				B58008BF204141B300648D94 /* AppDelegate.swift in Sources */,
 			);
