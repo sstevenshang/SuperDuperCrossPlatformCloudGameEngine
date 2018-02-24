@@ -14,7 +14,6 @@ class BallGameInstance(be.BaseInstance):
 
         # Initialize canvas
         self.canvas.create(canvas_size)
-        self.canvas.execute()
 
         # Initialize the two balls
         ball1 = be.Component(id_='ball1', loc=(20, 80), shape='circle', texture='#ff0000')
