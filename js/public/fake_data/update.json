@@ -1,0 +1,9 @@
+{
+    "class":     "COMPONENT",
+    "target":    "cat_0",
+    "operation": "UPDATE",
+    "ax_data":   {
+        "action":      "change_color",
+        "new_color":   "#96eacd"
+    }
+}

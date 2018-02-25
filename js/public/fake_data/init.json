@@ -1,0 +1,8 @@
+{
+    "class":     "CANVAS",
+    "target":    "",
+    "operation": "CREATE",
+    "ax_data":   {
+        "size": [800, 1200]
+    }
+}
