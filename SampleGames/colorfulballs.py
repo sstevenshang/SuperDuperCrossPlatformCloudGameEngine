@@ -1,7 +1,8 @@
 import ServerEngine as se
 from random import choice
 
-colors = ['#598987', '#678f8d', '#77a88d', '#ffd000', '#ff6670']
+colors = ['#598987', '#678f8d', '#77a88d', '#ffd000', '#ff6670', '#cccccc', '#666699',
+          '#ccff66', '#003366', '#666666', '#ccff66', '#6699ff', '#cc3366', '#3399cc']
 
 class BallGameInstance(se.BaseInstance):
     """
