@@ -21,11 +21,8 @@ class Command:
 
 
 class Instruction:
-    def __init__(self):
-        self.commands = []
-
-    def add_command(self, command):
-        self.commands.append(command)
+    def __init__(self, cmds):
+        self._commands = cmds
 
     def as_json(self):
         command_dicts = [cmd.as_dict() for cmd in self.commands]
