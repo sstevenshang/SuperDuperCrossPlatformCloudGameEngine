@@ -15,6 +15,7 @@
 		B58008C4204141B300648D94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58008C2204141B300648D94 /* Main.storyboard */; };
 		B58008C6204141B300648D94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58008C5204141B300648D94 /* Assets.xcassets */; };
 		B58008C9204141B300648D94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B58008C7204141B300648D94 /* LaunchScreen.storyboard */; };
+		B5EDB45B2042806900E7C8D6 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EDB45A2042806900E7C8D6 /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		B58008C5204141B300648D94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B58008C8204141B300648D94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B58008CA204141B300648D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5EDB45A2042806900E7C8D6 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		FB1C8888F715DFCA12E03B82 /* Pods-iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor/Pods-iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,12 +86,13 @@
 			children = (
 				B58008BE204141B300648D94 /* AppDelegate.swift */,
 				B58008C0204141B300648D94 /* ViewController.swift */,
+				B5EDB45A2042806900E7C8D6 /* Utility.swift */,
+				B55DF06E2041D8B70089EFA6 /* ShapedObjects.swift */,
+				B55DF0702042021A0089EFA6 /* NetworkManager.swift */,
 				B58008C2204141B300648D94 /* Main.storyboard */,
 				B58008C5204141B300648D94 /* Assets.xcassets */,
 				B58008C7204141B300648D94 /* LaunchScreen.storyboard */,
 				B58008CA204141B300648D94 /* Info.plist */,
-				B55DF06E2041D8B70089EFA6 /* ShapedObjects.swift */,
-				B55DF0702042021A0089EFA6 /* NetworkManager.swift */,
 			);
 			path = iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor;
 			sourceTree = "<group>";
@@ -206,11 +209,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor/Pods-iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5EDB45B2042806900E7C8D6 /* Utility.swift in Sources */,
 				B55DF0712042021A0089EFA6 /* NetworkManager.swift in Sources */,
 				B55DF06F2041D8B70089EFA6 /* ShapedObjects.swift in Sources */,
 				B58008C1204141B300648D94 /* ViewController.swift in Sources */,

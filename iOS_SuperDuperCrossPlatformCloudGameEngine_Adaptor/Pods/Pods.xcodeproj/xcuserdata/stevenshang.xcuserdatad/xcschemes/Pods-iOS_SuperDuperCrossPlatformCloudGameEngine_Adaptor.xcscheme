@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A58FB815A0BCC93E70754C1C1CAA6D52"
+               BlueprintIdentifier = "56E255306909373D0D9969C6E5E18DBD"
                BuildableName = "Pods_iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor.framework"
                BlueprintName = "Pods-iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A58FB815A0BCC93E70754C1C1CAA6D52"
+            BlueprintIdentifier = "56E255306909373D0D9969C6E5E18DBD"
             BuildableName = "Pods_iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor.framework"
             BlueprintName = "Pods-iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor"
             ReferencedContainer = "container:Pods.xcodeproj">

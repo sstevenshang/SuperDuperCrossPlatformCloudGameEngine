@@ -9,5 +9,6 @@ target 'iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor' do
   # Pods for iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor
   pod 'Alamofire', '~> 4.6'
   pod 'SwiftyJSON'
+  pod 'SwiftSocket'
 
 end

@@ -17,17 +17,34 @@ class ShapedObjects: UIView {
     
     var path: UIBezierPath!
     var shape: ShapeType!
-    var objectID: Int!
+    var objectID: String!
     var color: UIColor!
-    
-    init(shape: ShapeType, objectID: Int, color: UIColor, location: (x: CGFloat, y: CGFloat), size: (width: CGFloat, height: CGFloat)) {
+        
+    init(shape: ShapeType, objectID: String, color: UIColor, location: (x: CGFloat, y: CGFloat), size: (width: CGFloat, height: CGFloat)) {
         super.init(frame: CGRect(x: location.x, y: location.y, width: size.width, height: size.height))
         self.shape = shape
         self.objectID = objectID
         self.color = color
         self.backgroundColor = UIColor.clear
+        setUpRecognizer()
     }
-
+    
+    private func setUpRecognizer() {
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapDetected(tapRecognizer:)))
+        self.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc private func tapDetected(tapRecognizer:UITapGestureRecognizer) {
+        
+        let tapLocation:CGPoint = tapRecognizer.location(in: self)
+        if path.contains(tapLocation) {
+        }
+    }
+    
+    private func handleTap() {
+        print("I'm touched!")
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -35,7 +52,7 @@ class ShapedObjects: UIView {
 
 class RectangleObject: ShapedObjects {
     
-    init(objectID: Int, color: UIColor, location: (x: CGFloat, y: CGFloat), size: (CGFloat, CGFloat)) {
+    init(objectID: String, color: UIColor, location: (x: CGFloat, y: CGFloat), size: (CGFloat, CGFloat)) {
         super.init(shape: .Rectangle, objectID: objectID, color: color, location: location, size: size)
     }
     
@@ -65,7 +82,7 @@ class CircleObject: ShapedObjects {
     
     var radius: CGFloat!
     
-    init(objectID: Int, color: UIColor, location: (x: CGFloat, y: CGFloat), radius: CGFloat) {
+    init(objectID: String, color: UIColor, location: (x: CGFloat, y: CGFloat), radius: CGFloat) {
         let size = (radius*2, radius*2)
         super.init(shape: .Circle, objectID: objectID, color: color, location: location, size: size)
         self.radius = radius
@@ -79,8 +96,6 @@ class CircleObject: ShapedObjects {
         self.createRectangle()
         color.setFill()
         path.fill()
-        UIColor.black.setStroke()
-        path.stroke()
     }
     
     private func createRectangle() {
