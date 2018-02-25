@@ -87,7 +87,7 @@ class RectangleObject: ShapedObjects {
 
 class CircleObject: ShapedObjects {
     
-    var radius: CGFloat!
+    private var radius: CGFloat!
     
     init(objectID: String, color: UIColor, location: (x: CGFloat, y: CGFloat), radius: CGFloat) {
         let size = (radius*2, radius*2)
@@ -95,8 +95,20 @@ class CircleObject: ShapedObjects {
         self.radius = radius
     }
     
+    func getRadius() -> CGFloat {
+        return radius
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func changeRadius(radius: CGFloat) {
+        self.radius = radius
+        let oldFrame = self.frame
+        self.frame = CGRect(x: oldFrame.origin.x, y: oldFrame.origin.y, width: radius*2, height: radius*2)
+        self.setNeedsLayout()
+        self.setNeedsDisplay()
     }
     
     override func draw(_ rect: CGRect) {
@@ -109,5 +121,3 @@ class CircleObject: ShapedObjects {
         path = UIBezierPath(ovalIn: self.bounds)
     }
 }
-
-
