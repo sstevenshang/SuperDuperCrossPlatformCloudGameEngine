@@ -12,7 +12,9 @@ class BaseGame:
         t.start()
 
     def on_connect(self, user_id):
-        self._users[user_id] = self._instance_class(self, user_id)
+        user_inst = self._instance_class(self, user_id)
+        user_inst.setup_conn()
+        self._user[user_id] = user_inst
 
     def on_response(self, user_id, message):
         user_inst = self._users[user_id]
