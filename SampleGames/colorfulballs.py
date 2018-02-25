@@ -22,8 +22,8 @@ class BallGameInstance(se.BaseInstance):
         self.execute()
 
     def response_listener(self, response):
-        # If ball 1 is clicked, make ball 2 larger and ball 1 smaller
         if response.operation == 'UPDATE':
+            # If ball 1 is clicked, make ball 2 larger and ball 1 smaller
             if response.target == 'ball1' and response.ax_data['action'] == 'click':
                 print('Ball 1 clicked')
                 self.components['ball2'].update(action='change_size', factor=1.3)
