@@ -10,32 +10,40 @@ class BallGameInstance(se.BaseInstance):
     """
     def setup_conn(self):
         # Initialize canvas
-        self.canvas.create(canvas_size)
+        se.Canvas(400, 600, instance=self)
 
         # Initialize the two balls
-        ball1 = se.Component(id_='ball1', loc=(20, 80), shape='circle', texture='#ff0000')
-        ball2 = se.Component(id_='ball2', loc=(80, 20), shape='circle', texture='#00ff00')
-        
+        se.Component(name='ball1', loc=(100, 500), shape='circle', 
+                     texture='#ff0000', size=50, instance=self)
+        se.Component(name='ball2', loc=(300, 100), shape='circle', 
+                     texture='#00ff00', size=50, instance=self)
+
         # Send changes made to the client
         self.execute()
 
     def response_listener(self, response):
-        # If ball 1 is clicked, make ball 2 larger and ball 1 smaller
-        if response.id_ == 'ball1' and response.action == 'click':
-            ball2.update(action='change_size', factor=1.1)
-            ball1.update(action='change_size', factor=0.9)
+        print('instance listener triggered')
+        print(response.target, response.operation, response.ax_data)
 
-        # If ball 2 is clicked, make ball 1 larger and ball 2 smaller
-        if response.id_ == 'ball2' and response.action == 'click':
-            ball1.update(action='change_size', factor=1.1)
-            ball2.update(action='change_size', factor=0.9)
-        
-        # Send changes made to the client
-        self.execute()
+        # If ball 1 is clicked, make ball 2 larger and ball 1 smaller
+        if response.operation == 'UPDATE':
+            if response.target == 'ball1' and response.ax_data['action'] == 'click':
+                print('Ball 1 clicked')
+                self.components['ball2'].update(action='change_size', factor=1.3)
+                self.components['ball1'].update(action='change_size', factor=0.7)
+
+            # If ball 2 is clicked, make ball 1 larger and ball 2 smaller
+            if response.target == 'ball2' and response.ax_data['action'] == 'click':
+                print('Ball 2 clicked')
+                self.components['ball1'].update(action='change_size', factor=1.3)
+                self.components['ball2'].update(action='change_size', factor=0.7)
+            
+            # Send changes made to the client
+            self.execute()
 
 
 if __name__ == '__main__':
     # Initialize a game session and run it
-    game = se.BaseGame(instance_class=BallGameInstance)
+    game = se.BaseGame(instance_class=BallGameInstance, port=8081)
     game.run()
 
