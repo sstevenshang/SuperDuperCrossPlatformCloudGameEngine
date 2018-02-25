@@ -38,11 +38,18 @@ class ShapedObjects: UIView {
         
         let tapLocation:CGPoint = tapRecognizer.location(in: self)
         if path.contains(tapLocation) {
+            handleTap()
         }
     }
     
     private func handleTap() {
         print("I'm touched!")
+        NotificationCenter.default.post(name: NSNotification.Name("ObjectClicked"), object: self)
+    }
+    
+    public func changeColor(newColor: UIColor) {
+        self.color = newColor
+        self.setNeedsDisplay()
     }
     
     required init?(coder aDecoder: NSCoder) {

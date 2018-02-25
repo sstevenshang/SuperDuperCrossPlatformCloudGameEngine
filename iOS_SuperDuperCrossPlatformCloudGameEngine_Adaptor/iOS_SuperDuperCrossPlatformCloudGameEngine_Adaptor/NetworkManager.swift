@@ -12,36 +12,47 @@ import SwiftyJSON
 import SwiftSocket
 
 class NetworkManager: NSObject {
-
+    
     static let serverIP: String = "35.196.154.247"
     static let sharedSession: NetworkManager = NetworkManager()
+    
+    var clientConnected: Bool = false
+    
+    let client = TCPClient(address: NetworkManager.serverIP, port: 8080)
     
     func sendTCPRequest(parameters: [String: Any], responseHandler:@escaping (_ json: JSON)->Void) {
         
         let jsonData = serializeJSON(parameters: parameters)
         
-        let client = TCPClient(address: NetworkManager.serverIP, port: 8080)
-        switch client.connect(timeout: 10) {
-        case .success:
-            
-            switch client.send(data: jsonData) {
+        if !clientConnected {
+            switch client.connect(timeout: 10) {
             case .success:
-                guard let data = client.read(1014, timeout: 10) else {
-                    print("Failed to read anything!")
-                    return
-                }
-                if let response = String(bytes: data, encoding: .utf8) {
-                    print(response)
-                    let json = JSON(parseJSON: response)
-                    responseHandler(json)
-                }
+                clientConnected = true
+                sendDataToClient(jsonData: jsonData, responseHandler: responseHandler)
             case .failure(let error):
-                print("Failed to send!")
+                print("Failed to connect!")
                 print(error.localizedDescription)
                 return
             }
+        } else {
+            sendDataToClient(jsonData: jsonData, responseHandler: responseHandler)
+        }
+    }
+    
+    func sendDataToClient(jsonData: Data, responseHandler:@escaping (_ json: JSON)->Void) {
+        switch client.send(data: jsonData) {
+        case .success:
+            guard let data = client.read(1014, timeout: 10) else {
+                print("Failed to read anything!")
+                return
+            }
+            if let response = String(bytes: data, encoding: .utf8) {
+                print(response)
+                let json = JSON(parseJSON: response)
+                responseHandler(json)
+            }
         case .failure(let error):
-            print("Failed to connect!")
+            print("Failed to send!")
             print(error.localizedDescription)
             return
         }

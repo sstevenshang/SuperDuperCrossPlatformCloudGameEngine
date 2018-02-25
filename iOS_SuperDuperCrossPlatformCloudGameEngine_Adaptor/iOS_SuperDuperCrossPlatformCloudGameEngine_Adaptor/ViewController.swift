@@ -11,10 +11,10 @@ import SwiftyJSON
 
 class ViewController: UIViewController {
 
-    var objects: [String:UIView] = [:]
+    var objects: [String:ShapedObjects] = [:]
     
     private var canvasWidth: Int = 200
-    private var canvasHeight: Int = 300
+    private var canvasHeight: Int = 200
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +25,50 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    private func setUpObesrver(objectID: String) {
+        
+        guard let object = objects[objectID] else {
+            fatalError("Object is not stored!")
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("ObjectClicked"), object: object, queue: nil) { (notification) in
+            let parameters: [String: Any] = [
+                "class" : "COMPONENT",
+                "target" : objectID,
+                "action" : "UPDATE",
+                "ax_data" : [
+                "action" : "click"
+                ]
+            ]
+            NetworkManager.sharedSession.sendTCPRequest(parameters: parameters, responseHandler: { (response) in
+                self.parseJsonCommand(json: response)
+            })
+        }
+    
+    }
+    
     private func createCircle(objectID: String, relativeX: Double, relativeY: Double, relativeRadius: Double, colorHex: String) {
 
         let radius = self.view.frame.size.width * CGFloat(relativeRadius / Double(canvasWidth))
         let x = (CGFloat(relativeX)/CGFloat(canvasWidth)) * self.view.frame.size.width
         let y = (CGFloat(relativeX)/CGFloat(canvasHeight)) * self.view.frame.size.height
         let color = Utility.hexStringToUIColor(hex: colorHex)
-        var circleView = CircleObject(objectID: objectID, color: color, location: (x: x, y: y), radius: CGFloat(radius))
+        let circleView = CircleObject(objectID: objectID, color: color, location: (x: x, y: y), radius: CGFloat(radius))
         objects[objectID] = circleView
         self.view.addSubview(circleView)
+        
+        setUpObesrver(objectID: objectID)
+    }
+
+    private func changeCircleColor(objectID: String, newColorHex: String) {
+        let newColor = Utility.hexStringToUIColor(hex: newColorHex)
+        guard let object = objects[objectID] else {
+            fatalError("ObjectID is not stored!")
+        }
+        object.changeColor(newColor: newColor)
     }
     
-    private func changedCircleColor(objectID: Int, newColor: String) {
+    private func changeCircleRadius(objectID: String, newRelativeRadius: Double) {
         
     }
     
@@ -100,7 +132,16 @@ class ViewController: UIViewController {
                 }
             }
         case "UPDATE":
-            break
+            if let action = axData["action"]?.string {
+                switch action {
+                case "change_texture":
+                    if let newColor = axData["new_texture"]?.string {
+                        self.changeCircleColor(objectID: objectID, newColorHex: newColor)
+                    }
+                default:
+                    break
+                }
+            }
         default:
             print("Failed: invalid operation")
         }
