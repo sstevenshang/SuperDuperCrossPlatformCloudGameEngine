@@ -105,6 +105,7 @@ function processRes(data) {
     if (data.class == 'CANVAS') {
         canvas.width = data.ax_data.size[0]
         canvas.height = data.ax_data.size[1]
+        // ctx.transform(1, 0, 0, -1, 0, canvas.height)
     }
     if (data.class == 'COMPONENT') {
         if (data.operation == 'INIT') {
@@ -137,9 +138,9 @@ function addComp(data) {
 function updateComp(data) {
     comp = dict[data.target]
     ax = data.ax_data
-    if (ax.action == 'change_color') {
-        console.log(data.target, 'color change', ax.new_color)
-        comp.color = ax.new_color
+    if (ax.action == 'change_texture') {
+        console.log(data.target, 'color change', ax.texture)
+        comp.color = ax.texture
     }
     if (ax.action == 'change_size') {
         console.log(data.target, 'size change', ax.factor)
