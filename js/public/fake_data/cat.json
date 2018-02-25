@@ -1,0 +1,11 @@
+{
+    "class":     "COMPONENT",
+    "target":    "cat_0",
+    "operation": "INIT",
+    "ax_data":   {
+        "loc":     [100, 100],
+        "shape":   "circle",
+        "texture": "#e59cca",
+        "size": 30
+    }
+}
