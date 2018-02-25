@@ -8,10 +8,7 @@ class BallGameInstance(be.BaseInstance):
     """
     Define the instance of each connection.
     """
-    def __init__(self):
-        # Run base initialization
-        super().__init__()
-
+    def setup_conn(self):
         # Initialize canvas
         self.canvas.create(canvas_size)
 
@@ -23,8 +20,6 @@ class BallGameInstance(be.BaseInstance):
         self.execute()
 
     def response_listener(self, response):
-        super().response_listener()
-        
         # If ball 1 is clicked, make ball 2 larger and ball 1 smaller
         if response.id_ == 'ball1' and response.action == 'click':
             ball2.update(action='change_size', factor=1.1)
