@@ -1,10 +1,10 @@
-import beautifulengine as be
+import ServerEngine as se
 
 
 canvas_size = [1000, 1600]
 
 
-class BallGameInstance(be.BaseInstance):
+class BallGameInstance(se.BaseInstance):
     """
     Define the instance of each connection.
     """
@@ -13,8 +13,8 @@ class BallGameInstance(be.BaseInstance):
         self.canvas.create(canvas_size)
 
         # Initialize the two balls
-        ball1 = be.Component(id_='ball1', loc=(20, 80), shape='circle', texture='#ff0000')
-        ball2 = be.Component(id_='ball2', loc=(80, 20), shape='circle', texture='#00ff00')
+        ball1 = se.Component(id_='ball1', loc=(20, 80), shape='circle', texture='#ff0000')
+        ball2 = se.Component(id_='ball2', loc=(80, 20), shape='circle', texture='#00ff00')
         
         # Send changes made to the client
         self.execute()
@@ -36,6 +36,6 @@ class BallGameInstance(be.BaseInstance):
 
 if __name__ == '__main__':
     # Initialize a game session and run it
-    game = be.BaseGame(instance_class=BallGameInstance)
+    game = se.BaseGame(instance_class=BallGameInstance)
     game.run()
 
