@@ -50,8 +50,12 @@ class ViewController: UIViewController {
 
         let radius = self.view.frame.size.width * CGFloat(relativeRadius / Double(canvasWidth))
         
-        let x = (CGFloat(relativeX)/CGFloat(canvasWidth)) * self.view.frame.size.width
+        var x = (CGFloat(relativeX)/CGFloat(canvasWidth)) * self.view.frame.size.width
         let y = (CGFloat(relativeX)/CGFloat(canvasHeight)) * self.view.frame.size.height
+        
+        if (x + radius*2) >= self.view.frame.size.width {
+            x = x - radius/2
+        }
         
         let color = Utility.hexStringToUIColor(hex: colorHex)
         let circleView = CircleObject(objectID: objectID, color: color, location: (x: x, y: y), radius: CGFloat(radius))
@@ -144,7 +148,7 @@ class ViewController: UIViewController {
             if let action = axData["action"]?.string {
                 switch action {
                 case "change_texture":
-                    if let newColor = axData["new_texture"]?.string {
+                    if let newColor = axData["texture"]?.string {
                         self.changeCircleColor(objectID: objectID, newColorHex: newColor)
                     }
                 case "change_size":
