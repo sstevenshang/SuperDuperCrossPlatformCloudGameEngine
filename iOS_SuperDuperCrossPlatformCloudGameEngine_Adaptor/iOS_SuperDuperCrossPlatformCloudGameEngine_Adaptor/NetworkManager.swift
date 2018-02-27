@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 import SwiftyJSON
 import SwiftSocket
 
@@ -93,7 +92,7 @@ class NetworkManager: NSObject {
             return Data()
         }
     }
-    
+    /*
     func sendHTTPRequest(parameters: [String: Any], url: String, responseHandler:@escaping (_ json: JSON)->Void) {
         
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
@@ -104,4 +103,5 @@ class NetworkManager: NSObject {
             responseHandler(json)
         }
     }
+    */
 }

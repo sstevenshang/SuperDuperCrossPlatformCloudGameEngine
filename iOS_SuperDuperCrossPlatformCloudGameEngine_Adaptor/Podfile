@@ -7,7 +7,6 @@ target 'iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor' do
   use_frameworks!
 
   # Pods for iOS_SuperDuperCrossPlatformCloudGameEngine_Adaptor
-  pod 'Alamofire', '~> 4.6'
   pod 'SwiftyJSON'
   pod 'SwiftSocket'
 
